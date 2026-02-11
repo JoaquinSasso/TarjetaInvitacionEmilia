@@ -497,6 +497,27 @@
           0 0 60px rgba(200, 200, 220, 0.1);
       }
 
+      .rsvp-btn.disabled {
+        background: linear-gradient(135deg, #555, #666);
+        color: #999;
+        pointer-events: none;
+        cursor: not-allowed;
+        box-shadow: none;
+      }
+
+      .rsvp-btn.disabled:hover {
+        transform: none;
+        box-shadow: none;
+      }
+
+      .rsvp-closed {
+        font-size: 0.8rem;
+        color: #cc6666;
+        margin-top: 10px;
+        letter-spacing: 1px;
+        font-weight: 600;
+      }
+
       .rsvp-detail {
         font-size: 0.75rem;
         color: #777;
@@ -967,20 +988,22 @@
         </div>
       </section>
 
-      <section class="rsvp-section fade-up">
+      <section class="rsvp-section fade-up" id="rsvp-section">
         <p class="rsvp-title">CONFIRMAR ASISTENCIA</p>
         <!-- ✏️ CAMBIAR el número de WhatsApp (con código de país, sin espacios) ↓ -->
         <a
+          id="rsvp-btn"
           href="https://docs.google.com/forms/d/e/1FAIpQLSfTFLrpERakD0Cy0QAz7ucr2r_hNRldLj0hn3mv7741jzXwLA/viewform?usp=publish-editor"
           target="_blank"
           class="rsvp-btn">
           ¡Click aquí!
         </a>
         <!-- ✏️ CAMBIAR fecha límite ↓ -->
-        <p class="rsvp-detail">Confirmar antes del 02 / 03 / 2026</p>
+        <p class="rsvp-detail" id="rsvp-detail">Confirmar antes del 02 / 03 /
+          2026</p>
       </section>
       <div class="divider fade-up">✦</div>
-      
+
       <!-- ═══════ REGALO / TRANSFERENCIA ═══════ -->
       <section class="gift-section fade-up">
         <div class="gift-card">
@@ -1105,6 +1128,22 @@
 
         updateCountdown();
         setInterval(updateCountdown, 1000);
+      })();
+
+      /* ── Deshabilitar RSVP después del 02/03/2026 ── */
+      (function () {
+        // Fecha límite: 2 de marzo de 2026 a las 23:59:59 (hora Argentina)
+        const deadline = new Date('2026-03-02T23:59:59-03:00').getTime();
+        const now = Date.now();
+
+        if (now > deadline) {
+          const btn = document.getElementById('rsvp-btn');
+          const detail = document.getElementById('rsvp-detail');
+          btn.classList.add('disabled');
+          btn.removeAttribute('href');
+          btn.textContent = '🔒 Lista cerrada';
+          detail.innerHTML = '<span class="rsvp-closed">La confirmación ya cerró el 02/03/2026</span>';
+        }
       })();
 
       /* ── Copiar alias de Mercado Pago ── */
