@@ -139,12 +139,13 @@
         text-align: center;
         position: relative;
         padding: 0;
-        margin-bottom: -150px;
+        margin-bottom: -100px;
       }
 
       /* GIF como fondo full-width */
       .hero-bg {
         position: relative;
+        top: -50px;
         width: 100%;
       }
 
@@ -173,7 +174,7 @@
       /* Texto superpuesto sobre la parte inferior del GIF */
       .hero-content {
         position: absolute;
-        bottom: 150px;
+        bottom: 120px;
         left: 0;
         right: 0;
         z-index: 2;
@@ -518,6 +519,291 @@
         display: block;
       }
 
+      /* ── Countdown ── */
+      .countdown-section {
+        text-align: center;
+        margin: 30px 10px;
+        padding: 34px 24px;
+        background: linear-gradient(
+          135deg,
+          rgba(50, 50, 70, 0.4),
+          rgba(25, 25, 40, 0.6)
+        );
+        border-radius: 16px;
+        border: 1px solid rgba(200, 200, 220, 0.08);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .countdown-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+      }
+
+      .countdown-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.1rem;
+        letter-spacing: 3px;
+        margin-bottom: 6px;
+        color: #ddd;
+      }
+
+      .countdown-subtitle {
+        font-size: 0.75rem;
+        color: #888;
+        letter-spacing: 1px;
+        margin-bottom: 22px;
+      }
+
+      .countdown-grid {
+        display: flex;
+        justify-content: center;
+        gap: 14px;
+      }
+
+      .countdown-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 36px;
+      }
+
+      .countdown-number {
+        font-family: "Playfair Display", serif;
+        font-size: 2.2rem;
+        color: #fff;
+        line-height: 1;
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+      }
+
+      .countdown-label {
+        font-size: 0.6rem;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #888;
+        margin-top: 6px;
+      }
+
+      .countdown-separator {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        color: rgba(255, 255, 255, 0.25);
+        align-self: flex-start;
+        margin-top: 2px;
+      }
+
+      /* ── Gift / Transfer ── */
+      .gift-section {
+        margin: 30px 10px;
+      }
+
+      .gift-card {
+        background: linear-gradient(
+          135deg,
+          rgba(40, 40, 60, 0.5),
+          rgba(20, 20, 35, 0.7)
+        );
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(200, 200, 220, 0.08);
+        border-radius: 16px;
+        padding: 28px 24px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .gift-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          rgba(255, 255, 255, 0.15),
+          transparent
+        );
+      }
+
+      .gift-icon {
+        font-size: 2rem;
+        margin-bottom: 12px;
+        display: block;
+      }
+
+      .gift-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.15rem;
+        color: #fff;
+        margin-bottom: 10px;
+        letter-spacing: 1px;
+      }
+
+      .gift-text {
+        font-size: 0.82rem;
+        color: #8888a0;
+        line-height: 1.7;
+        margin-bottom: 20px;
+      }
+
+      .gift-alias {
+        display: inline-block;
+        background: linear-gradient(
+          135deg,
+          rgba(80, 80, 110, 0.5),
+          rgba(50, 50, 70, 0.7)
+        );
+        border: 1px solid rgba(200, 200, 220, 0.12);
+        border-radius: 10px;
+        padding: 14px 24px;
+        margin-bottom: 10px;
+      }
+
+      .gift-alias-label {
+        font-size: 0.6rem;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #888;
+        margin-bottom: 6px;
+      }
+
+      .gift-alias-value {
+        font-family: "Playfair Display", serif;
+        font-size: 1.2rem;
+        color: #fff;
+        word-break: break-all;
+      }
+
+      .gift-copy-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 12px;
+        padding: 8px 20px;
+        border-radius: 50px;
+        background: linear-gradient(135deg, #c0c0c0, #e8e8e8);
+        color: #111;
+        border: none;
+        font-weight: 600;
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      .gift-copy-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(200, 200, 220, 0.2);
+      }
+
+      .gift-note {
+        font-size: 0.7rem;
+        color: #666;
+        margin-top: 16px;
+        letter-spacing: 1px;
+      }
+
+      /* ── Music suggestion ── */
+      .music-section {
+        margin: 30px 10px;
+      }
+
+      .music-card {
+        background: linear-gradient(
+          135deg,
+          rgba(40, 40, 60, 0.5),
+          rgba(20, 20, 35, 0.7)
+        );
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(200, 200, 220, 0.08);
+        border-radius: 16px;
+        padding: 28px 24px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .music-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          rgba(255, 255, 255, 0.15),
+          transparent
+        );
+      }
+
+      .music-icon {
+        font-size: 2rem;
+        margin-bottom: 12px;
+        display: block;
+      }
+
+      .music-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.15rem;
+        color: #fff;
+        margin-bottom: 10px;
+        letter-spacing: 1px;
+      }
+
+      .music-text {
+        font-size: 0.82rem;
+        color: #8888a0;
+        line-height: 1.7;
+        margin-bottom: 20px;
+      }
+
+      .music-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 30px;
+        border-radius: 50px;
+        background: linear-gradient(135deg, #c0c0c0, #e8e8e8);
+        color: #111;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.8rem;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        font-family: "Montserrat", sans-serif;
+        box-shadow:
+          0 4px 20px rgba(200, 200, 220, 0.15),
+          0 0 40px rgba(200, 200, 220, 0.05);
+      }
+
+      .music-btn:hover {
+        transform: translateY(-2px);
+        box-shadow:
+          0 6px 30px rgba(200, 200, 220, 0.25),
+          0 0 60px rgba(200, 200, 220, 0.1);
+      }
+
       /* ── Scroll animations ── */
       .fade-up {
         opacity: 0;
@@ -573,27 +859,15 @@
         <!-- Foto principal / panorámica -->
         <div class="gallery-item featured">
           <!-- Descomentar y poner la foto real: -->
-          <!-- <img src="foto1.jpg" alt="Emilia" /> -->
-          <div class="placeholder-text">
-            <span class="icon">📸</span>
-            <span>Foto principal</span>
-          </div>
+          <img src="foto1.jpg" alt="Emilia" />
         </div>
         <!-- Foto 2 -->
         <div class="gallery-item">
-          <!-- <img src="foto2.jpg" alt="Emilia" /> -->
-          <div class="placeholder-text">
-            <span class="icon">📸</span>
-            <span>Foto 2</span>
-          </div>
+          <img src="foto2.jpg" alt="Emilia" />
         </div>
         <!-- Foto 3 -->
         <div class="gallery-item">
-          <!-- <img src="foto3.jpg" alt="Emilia" /> -->
-          <div class="placeholder-text">
-            <span class="icon">📸</span>
-            <span>Foto 3</span>
-          </div>
+          <img src="foto3.jpg" alt="Emilia" />
         </div>
       </section>
 
@@ -606,7 +880,7 @@
           <span class="card-icon">📅</span>
           <p class="card-label">Fecha</p>
           <!-- ✏️ CAMBIAR la fecha acá ↓ -->
-          <p class="card-value">Sábado __ de ________ de 2026</p>
+          <p class="card-value">Sábado 7 de Marzo de 2026</p>
         </div>
 
         <!-- HORARIOS -->
@@ -634,29 +908,15 @@
           <span class="card-icon">📍</span>
           <p class="card-label">Lugar</p>
           <!-- ✏️ CAMBIAR nombre y dirección ↓ -->
-          <p class="card-value">Nombre del Salón</p>
-          <p class="card-detail">Dirección completa, Ciudad, Provincia</p>
+          <p class="card-value">Finca Casiana</p>
+          <p class="card-detail">Martín Güemes Este 4178</p>
           <!-- Mapa de Google Maps -->
           <div class="map-container">
-            <!--
-              PARA AGREGAR EL MAPA:
-              1. Ir a Google Maps → buscar la dirección
-              2. Compartir → Incorporar un mapa
-              3. Copiar el <iframe> y pegarlo acá
-              4. Borrar el div .map-placeholder
-            -->
-            <div class="map-placeholder">
-              <span style="font-size: 2rem">🗺️</span>
-              <span>Mapa — agregar iframe de Google Maps</span>
-            </div>
-            <!-- Ejemplo (descomentar y cambiar src):
             <iframe
-              src="https://www.google.com/maps/embed?pb=COMPLETAR"
-              allowfullscreen=""
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d261.4629766407958!2d-68.48061572441307!3d-31.555765607137754!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96816ad6ed8e07d9%3A0x6c3b5ab9be261e0c!2sFinca%20Casiana%20-%20Caba%C3%B1as%20y%20Sal%C3%B3n%20de%20eventos!5e1!3m2!1ses!2sar!4v1770831751383!5m2!1ses!2sar"
+              width="600" height="450" style="border:0;" allowfullscreen
               loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-            -->
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
 
@@ -665,7 +925,7 @@
           <span class="card-icon">👗</span>
           <p class="card-label">Dress Code</p>
           <!-- ✏️ CAMBIAR el dress code ↓ -->
-          <p class="card-value">Elegante Sport</p>
+          <p class="card-value">Elegante</p>
           <p class="card-detail">Paleta de colores sugerida:</p>
           <div class="dresscode-visual">
             <div class="color-dot" style="background: #c0c0c0"
@@ -680,6 +940,78 @@
         </div>
       </section>
 
+      <!-- ═══════ CUENTA REGRESIVA ═══════ -->
+      <section class="countdown-section fade-up">
+        <p class="countdown-title">FALTAN</p>
+        <p class="countdown-subtitle">✨ para la gran noche ✨</p>
+        <div class="countdown-grid" id="countdown">
+          <div class="countdown-item">
+            <span class="countdown-number" id="cd-days">--</span>
+            <span class="countdown-label">Días</span>
+          </div>
+          <span class="countdown-separator">:</span>
+          <div class="countdown-item">
+            <span class="countdown-number" id="cd-hours">--</span>
+            <span class="countdown-label">Horas</span>
+          </div>
+          <span class="countdown-separator">:</span>
+          <div class="countdown-item">
+            <span class="countdown-number" id="cd-minutes">--</span>
+            <span class="countdown-label">Min</span>
+          </div>
+          <span class="countdown-separator">:</span>
+          <div class="countdown-item">
+            <span class="countdown-number" id="cd-seconds">--</span>
+            <span class="countdown-label">Seg</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider fade-up">✦</div>
+
+      <!-- ═══════ REGALO / TRANSFERENCIA ═══════ -->
+      <section class="gift-section fade-up">
+        <div class="gift-card">
+          <span class="gift-icon">🎁</span>
+          <p class="gift-title">¿No sabés qué regalar?</p>
+          <p class="gift-text">
+            Si no tenés idea o preferís algo práctico,<br>
+            podés colaborar con una transferencia 💜
+          </p>
+          <div class="gift-alias">
+            <p class="gift-alias-label">Alias de Mercado Pago</p>
+            <!-- ✏️ CAMBIAR el alias de Mercado Pago ↓ -->
+            <p class="gift-alias-value" id="mp-alias">emilia.s02</p>
+          </div>
+          <br>
+          <button class="gift-copy-btn" onclick="copyAlias()">
+            📋 Copiar alias
+          </button>
+          <p class="gift-note">¡Gracias por tu cariño! 🤍</p>
+        </div>
+      </section>
+
+      <div class="divider fade-up">✦</div>
+
+      <!-- ═══════ SUGERÍ CANCIONES ═══════ -->
+      <section class="music-section fade-up">
+        <div class="music-card">
+          <span class="music-icon">🎶</span>
+          <p class="music-title">¡Armá la playlist con nosotros!</p>
+          <p class="music-text">
+            ¿Qué canción no puede faltar en la fiesta?<br>
+            Dejanos tu sugerencia y la sumamos a la lista 🪩
+          </p>
+          <!-- ✏️ CAMBIAR la URL del formulario de Google ↓ -->
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfbWP0_uX_nmv5xvavBgH1jQMQswzhEW6jbGlcm4htckQ8ePA/viewform?usp=publish-editor"
+            target="_blank"
+            class="music-btn">
+            🎵 Sugerir canción
+          </a>
+        </div>
+      </section>
+
       <div class="divider fade-up">✦ ✦ ✦</div>
 
       <!-- ═══════ RSVP ═══════ -->
@@ -687,13 +1019,13 @@
         <p class="rsvp-title">CONFIRMAR ASISTENCIA</p>
         <!-- ✏️ CAMBIAR el número de WhatsApp (con código de país, sin espacios) ↓ -->
         <a
-          href="https://wa.me/54XXXXXXXXXX?text=%C2%A1Hola!%20Confirmo%20asistencia%20a%20los%2015%20de%20Emilia%20%F0%9F%8E%89"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfTFLrpERakD0Cy0QAz7ucr2r_hNRldLj0hn3mv7741jzXwLA/viewform?usp=publish-editor"
           target="_blank"
           class="rsvp-btn">
-          💬 WhatsApp
+          ¡Click aquí!
         </a>
         <!-- ✏️ CAMBIAR fecha límite ↓ -->
-        <p class="rsvp-detail">Confirmar antes del __ / __ / 2026</p>
+        <p class="rsvp-detail">Confirmar antes del 02 / 03 / 2026</p>
       </section>
 
       <!-- ═══════ FOOTER ═══════ -->
@@ -739,6 +1071,52 @@
         }
       }
       window.addEventListener('resize', updateHeroHeight);
+
+      /* ── Countdown timer — 7 de marzo 2026, 21:00 (hora local) ── */
+      (function () {
+        // Fecha del evento: 7 de marzo de 2026 a las 21:00 hs (hora Argentina)
+        const eventDate = new Date('2026-03-07T21:00:00-03:00').getTime();
+
+        function updateCountdown() {
+          const now = Date.now();
+          const diff = eventDate - now;
+
+          if (diff <= 0) {
+            document.getElementById('cd-days').textContent = '🎉';
+            document.getElementById('cd-hours').textContent = '';
+            document.getElementById('cd-minutes').textContent = '';
+            document.getElementById('cd-seconds').textContent = '';
+            document.querySelectorAll('.countdown-separator').forEach(s => s.style.display = 'none');
+            document.querySelectorAll('.countdown-label').forEach(l => l.style.display = 'none');
+            document.querySelector('.countdown-subtitle').textContent = '¡Es hoy! 🥳';
+            return;
+          }
+
+          const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+          document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+          document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+          document.getElementById('cd-minutes').textContent = String(minutes).padStart(2, '0');
+          document.getElementById('cd-seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+      })();
+
+      /* ── Copiar alias de Mercado Pago ── */
+      function copyAlias() {
+        const alias = document.getElementById('mp-alias').textContent;
+        navigator.clipboard.writeText(alias).then(function () {
+          const btn = document.querySelector('.gift-copy-btn');
+          const original = btn.innerHTML;
+          btn.innerHTML = '✅ ¡Copiado!';
+          setTimeout(function () { btn.innerHTML = original; }, 2000);
+        });
+      }
 
       /* ── Fade-up on scroll ── */
       const observer = new IntersectionObserver(
