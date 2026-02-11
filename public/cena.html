@@ -1,0 +1,1155 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MIS 15 ✦ Emilia Sánchez</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&family=Great+Vibes&display=swap"
+      rel="stylesheet" />
+    <style>
+      /* ── Reset & base ── */
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        color: #f0eef1;
+        /* --hero-h se calcula con JS: altura del hero */
+        --hero-h: 500px;
+        background:
+          linear-gradient(
+            to bottom,
+            #1f1a1e var(--hero-h),
+            #15121a calc(var(--hero-h) + 150px)
+          );
+        overflow-x: hidden;
+        min-height: 100vh;
+      }
+
+      html {
+        background: #1f1a1e;
+      }
+
+      /* ── Background photo (placeholder, desactivado mientras no haya foto) ── */
+      .bg-photo {
+        display: none;
+      }
+
+      /* ── Disco‑sparkle overlay ── */
+      .sparkle-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background:
+          radial-gradient(
+            ellipse at 30% 20%,
+            rgba(212, 212, 255, 0.06) 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse at 75% 70%,
+            rgba(255, 255, 255, 0.04) 0%,
+            transparent 50%
+          );
+        pointer-events: none;
+      }
+
+      /* floating sparkle blobs */
+      .sparkle-overlay::before,
+      .sparkle-overlay::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        background: radial-gradient(white, transparent 70%);
+        animation: float 6s ease-in-out infinite alternate;
+        opacity: 0.12;
+      }
+      .sparkle-overlay::before {
+        width: 350px;
+        height: 350px;
+        top: 10%;
+        left: -5%;
+      }
+      .sparkle-overlay::after {
+        width: 250px;
+        height: 250px;
+        bottom: 15%;
+        right: -3%;
+        animation-delay: 3s;
+      }
+
+      @keyframes float {
+        to {
+          transform: translateY(-30px) scale(1.05);
+        }
+      }
+
+      /* ── Particles (disco reflections) ── */
+      .particles {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        overflow: hidden;
+      }
+      .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: white;
+        border-radius: 50%;
+        opacity: 0;
+        animation: sparkle-particle 4s ease-in-out infinite;
+      }
+
+      @keyframes sparkle-particle {
+        0%,
+        100% {
+          opacity: 0;
+          transform: scale(0);
+        }
+        50% {
+          opacity: 0.8;
+          transform: scale(1);
+        }
+      }
+
+      /* ── Wrapper ── */
+      .invitation {
+        max-width: 520px;
+        margin: 0 auto;
+        padding: 20px 16px 40px;
+        position: relative;
+      }
+
+      /* ── Hero section ── */
+      .hero {
+        text-align: center;
+        position: relative;
+        padding: 0;
+        margin-bottom: -100px;
+      }
+
+      /* GIF como fondo full-width */
+      .hero-bg {
+        position: relative;
+        top: -50px;
+        width: 100%;
+      }
+
+      .hero-bg img {
+        width: 100%;
+        display: block;
+      }
+
+      /* Degradado inferior: funde la base del GIF con el fondo */
+      .hero-bg::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -1px;
+        height: 40%;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          #1f1a1e
+        );
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      /* Texto superpuesto sobre la parte inferior del GIF */
+      .hero-content {
+        position: absolute;
+        bottom: 120px;
+        left: 0;
+        right: 0;
+        z-index: 2;
+        padding: 0 20px 20px;
+      }
+
+      .hero .subtitle {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 300;
+        font-size: 0.85rem;
+        letter-spacing: 6px;
+        text-transform: uppercase;
+        color: #b8b8c8;
+        margin-bottom: 8px;
+      }
+
+      .hero .name {
+        font-family: "Great Vibes", cursive;
+        font-size: 3.5rem;
+        color: #fff;
+        text-shadow:
+          0 0 30px rgba(255, 255, 255, 0.3),
+          0 2px 10px rgba(0, 0, 0, 0.5);
+        line-height: 1.1;
+        margin-bottom: 12px;
+      }
+
+      .hero .age {
+        font-family: "Playfair Display", serif;
+        font-size: 1.3rem;
+        font-weight: 400;
+        color: #d0d0dd;
+        letter-spacing: 3px;
+      }
+
+      /* ── Divider ── */
+      .divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin: 30px 0;
+        color: #666;
+        font-size: 0.7rem;
+        letter-spacing: 4px;
+      }
+
+      .divider::before,
+      .divider::after {
+        content: "";
+        flex: 1;
+        max-width: 100px;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          rgba(200, 200, 220, 0.4),
+          transparent
+        );
+      }
+
+      /* ── Photo gallery ── */
+      .gallery {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin: 0 10px 10px;
+      }
+
+      .gallery-item {
+        position: relative;
+        border-radius: 14px;
+        overflow: hidden;
+        aspect-ratio: 3/4;
+        background: linear-gradient(
+          135deg,
+          rgba(60, 60, 80, 0.4),
+          rgba(30, 30, 45, 0.6)
+        );
+        border: 1px solid rgba(200, 200, 220, 0.1);
+      }
+
+      .gallery-item.featured {
+        grid-column: 1 / -1;
+        aspect-ratio: 16 / 9;
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .gallery-item .placeholder-text {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: rgba(200, 200, 220, 0.3);
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        gap: 8px;
+      }
+
+      .gallery-item .placeholder-text .icon {
+        font-size: 1.8rem;
+        opacity: 0.4;
+      }
+
+      /* ── Info cards ── */
+      .info-section {
+        margin: 30px 10px;
+      }
+
+      .info-card {
+        background: linear-gradient(
+          135deg,
+          rgba(40, 40, 60, 0.5),
+          rgba(20, 20, 35, 0.7)
+        );
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(200, 200, 220, 0.08);
+        border-radius: 16px;
+        padding: 28px 24px;
+        margin-bottom: 14px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .info-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          rgba(255, 255, 255, 0.15),
+          transparent
+        );
+      }
+
+      .info-card .card-icon {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+        display: block;
+      }
+
+      .info-card .card-label {
+        font-size: 0.65rem;
+        font-weight: 600;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: #999aaa;
+        margin-bottom: 6px;
+      }
+
+      .info-card .card-value {
+        font-family: "Playfair Display", serif;
+        font-size: 1.3rem;
+        color: #fff;
+        line-height: 1.5;
+      }
+
+      .info-card .card-detail {
+        font-size: 0.8rem;
+        color: #8888a0;
+        margin-top: 6px;
+        line-height: 1.6;
+      }
+
+      /* schedule sub-grid */
+      .schedule-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-top: 12px;
+      }
+
+      .schedule-item .time-label {
+        font-size: 0.6rem;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #888;
+        margin-bottom: 4px;
+      }
+
+      .schedule-item .time-value {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        color: #fff;
+      }
+
+      .schedule-item .time-desc {
+        font-size: 0.75rem;
+        color: #7777a0;
+        margin-top: 2px;
+      }
+
+      /* ── Map embed ── */
+      .map-container {
+        margin-top: 14px;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(200, 200, 220, 0.08);
+        height: 200px;
+        background: rgba(30, 30, 45, 0.5);
+        position: relative;
+      }
+
+      .map-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        filter: grayscale(0.6) brightness(0.7) contrast(1.1);
+      }
+
+      .map-placeholder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        color: rgba(200, 200, 220, 0.3);
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      /* ── Dress code ── */
+      .dresscode-visual {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .color-dot {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        border: 2px solid rgba(255, 255, 255, 0.15);
+        transition: transform 0.3s;
+      }
+
+      .color-dot:hover {
+        transform: scale(1.2);
+      }
+
+      /* ── RSVP ── */
+      .rsvp-section {
+        text-align: center;
+        margin: 40px 10px 20px;
+        padding: 34px 24px;
+        background: linear-gradient(
+          135deg,
+          rgba(50, 50, 70, 0.4),
+          rgba(25, 25, 40, 0.6)
+        );
+        border-radius: 16px;
+        border: 1px solid rgba(200, 200, 220, 0.08);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .rsvp-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+      }
+
+      .rsvp-section .rsvp-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.1rem;
+        letter-spacing: 3px;
+        margin-bottom: 16px;
+        color: #ddd;
+      }
+
+      .rsvp-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 36px;
+        border-radius: 50px;
+        background: linear-gradient(135deg, #c0c0c0, #e8e8e8);
+        color: #111;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.85rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        box-shadow:
+          0 4px 20px rgba(200, 200, 220, 0.15),
+          0 0 40px rgba(200, 200, 220, 0.05);
+      }
+
+      .rsvp-btn:hover {
+        transform: translateY(-2px);
+        box-shadow:
+          0 6px 30px rgba(200, 200, 220, 0.25),
+          0 0 60px rgba(200, 200, 220, 0.1);
+      }
+
+      .rsvp-btn.disabled {
+        background: linear-gradient(135deg, #555, #666);
+        color: #999;
+        pointer-events: none;
+        cursor: not-allowed;
+        box-shadow: none;
+      }
+
+      .rsvp-btn.disabled:hover {
+        transform: none;
+        box-shadow: none;
+      }
+
+      .rsvp-closed {
+        font-size: 0.8rem;
+        color: #cc6666;
+        margin-top: 10px;
+        letter-spacing: 1px;
+        font-weight: 600;
+      }
+
+      .rsvp-detail {
+        font-size: 0.75rem;
+        color: #777;
+        margin-top: 14px;
+        letter-spacing: 1px;
+      }
+
+      /* ── Footer ── */
+      .footer {
+        text-align: center;
+        padding: 30px 20px 50px;
+        color: #555;
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+      }
+
+      .footer .sparkle-emoji {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        display: block;
+      }
+
+      /* ── Countdown ── */
+      .countdown-section {
+        text-align: center;
+        margin: 30px 10px;
+        padding: 34px 24px;
+        background: linear-gradient(
+          135deg,
+          rgba(50, 50, 70, 0.4),
+          rgba(25, 25, 40, 0.6)
+        );
+        border-radius: 16px;
+        border: 1px solid rgba(200, 200, 220, 0.08);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .countdown-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+      }
+
+      .countdown-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.1rem;
+        letter-spacing: 3px;
+        margin-bottom: 6px;
+        color: #ddd;
+      }
+
+      .countdown-subtitle {
+        font-size: 0.75rem;
+        color: #888;
+        letter-spacing: 1px;
+        margin-bottom: 22px;
+      }
+
+      .countdown-grid {
+        display: flex;
+        justify-content: center;
+        gap: 14px;
+      }
+
+      .countdown-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 36px;
+      }
+
+      .countdown-number {
+        font-family: "Playfair Display", serif;
+        font-size: 2.2rem;
+        color: #fff;
+        line-height: 1;
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+      }
+
+      .countdown-label {
+        font-size: 0.6rem;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #888;
+        margin-top: 6px;
+      }
+
+      .countdown-separator {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        color: rgba(255, 255, 255, 0.25);
+        align-self: flex-start;
+        margin-top: 2px;
+      }
+
+      /* ── Gift / Transfer ── */
+      .gift-section {
+        margin: 30px 10px;
+      }
+
+      .gift-card {
+        background: linear-gradient(
+          135deg,
+          rgba(40, 40, 60, 0.5),
+          rgba(20, 20, 35, 0.7)
+        );
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(200, 200, 220, 0.08);
+        border-radius: 16px;
+        padding: 28px 24px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .gift-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          rgba(255, 255, 255, 0.15),
+          transparent
+        );
+      }
+
+      .gift-icon {
+        font-size: 2rem;
+        margin-bottom: 12px;
+        display: block;
+      }
+
+      .gift-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.15rem;
+        color: #fff;
+        margin-bottom: 10px;
+        letter-spacing: 1px;
+      }
+
+      .gift-text {
+        font-size: 0.82rem;
+        color: #8888a0;
+        line-height: 1.7;
+        margin-bottom: 20px;
+      }
+
+      .gift-alias {
+        display: inline-block;
+        background: linear-gradient(
+          135deg,
+          rgba(80, 80, 110, 0.5),
+          rgba(50, 50, 70, 0.7)
+        );
+        border: 1px solid rgba(200, 200, 220, 0.12);
+        border-radius: 10px;
+        padding: 14px 24px;
+        margin-bottom: 10px;
+      }
+
+      .gift-alias-label {
+        font-size: 0.6rem;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #888;
+        margin-bottom: 6px;
+      }
+
+      .gift-alias-value {
+        font-family: "Playfair Display", serif;
+        font-size: 1.2rem;
+        color: #fff;
+        word-break: break-all;
+      }
+
+      .gift-copy-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 12px;
+        padding: 8px 20px;
+        border-radius: 50px;
+        background: linear-gradient(135deg, #c0c0c0, #e8e8e8);
+        color: #111;
+        border: none;
+        font-weight: 600;
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      .gift-copy-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(200, 200, 220, 0.2);
+      }
+
+      .gift-note {
+        font-size: 0.7rem;
+        color: #666;
+        margin-top: 16px;
+        letter-spacing: 1px;
+      }
+
+      /* ── Music suggestion ── */
+      .music-section {
+        margin: 30px 10px;
+      }
+
+      .music-card {
+        background: linear-gradient(
+          135deg,
+          rgba(40, 40, 60, 0.5),
+          rgba(20, 20, 35, 0.7)
+        );
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(200, 200, 220, 0.08);
+        border-radius: 16px;
+        padding: 28px 24px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .music-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          rgba(255, 255, 255, 0.15),
+          transparent
+        );
+      }
+
+      .music-icon {
+        font-size: 2rem;
+        margin-bottom: 12px;
+        display: block;
+      }
+
+      .music-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.15rem;
+        color: #fff;
+        margin-bottom: 10px;
+        letter-spacing: 1px;
+      }
+
+      .music-text {
+        font-size: 0.82rem;
+        color: #8888a0;
+        line-height: 1.7;
+        margin-bottom: 20px;
+      }
+
+      .music-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 30px;
+        border-radius: 50px;
+        background: linear-gradient(135deg, #c0c0c0, #e8e8e8);
+        color: #111;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.8rem;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        font-family: "Montserrat", sans-serif;
+        box-shadow:
+          0 4px 20px rgba(200, 200, 220, 0.15),
+          0 0 40px rgba(200, 200, 220, 0.05);
+      }
+
+      .music-btn:hover {
+        transform: translateY(-2px);
+        box-shadow:
+          0 6px 30px rgba(200, 200, 220, 0.25),
+          0 0 60px rgba(200, 200, 220, 0.1);
+      }
+
+      /* ── Scroll animations ── */
+      .fade-up {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ── Responsive ── */
+      @media (min-width: 600px) {
+        .invitation {
+          padding: 30px 20px 50px;
+        }
+        .hero .name {
+          font-size: 4.5rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Fondo con foto difuminada y oscurecida -->
+    <div class="bg-photo"></div>
+
+    <!-- Sparkle overlay -->
+    <div class="sparkle-overlay"></div>
+
+    <!-- Partículas tipo reflejos de bola disco -->
+    <div class="particles" id="particles"></div>
+
+    <div class="invitation">
+      <!-- ═══════ HERO ═══════ -->
+      <section class="hero fade-up">
+        <div class="hero-bg">
+          <img src="disco-ball.gif" alt="Bola disco" />
+        </div>
+        <div class="hero-content">
+          <p class="subtitle">Te invito a mis</p>
+          <p class="age">— XV Años —</p>
+          <br>
+          <h1 class="name">Emilia Sanchez</h1>
+        </div>
+      </section>
+
+      <div class="divider fade-up">✦ ✦ ✦</div>
+
+      <!-- ═══════ GALERÍA DE FOTOS ═══════ -->
+      <section class="gallery fade-up">
+        <!-- Foto principal / panorámica -->
+        <div class="gallery-item featured">
+          <!-- Descomentar y poner la foto real: -->
+          <img src="foto1.jpg" alt="Emilia" />
+        </div>
+        <!-- Foto 2 -->
+        <div class="gallery-item">
+          <img src="foto2.jpg" alt="Emilia" />
+        </div>
+        <!-- Foto 3 -->
+        <div class="gallery-item">
+          <img src="foto3.jpg" alt="Emilia" />
+        </div>
+      </section>
+
+      <div class="divider fade-up">✦</div>
+
+      <!-- ═══════ INFO CARDS ═══════ -->
+      <section class="info-section">
+        <!-- FECHA -->
+        <div class="info-card fade-up">
+          <span class="card-icon">📅</span>
+          <p class="card-label">Fecha</p>
+          <!-- ✏️ CAMBIAR la fecha acá ↓ -->
+          <p class="card-value">Sábado 7 de Marzo de 2026</p>
+        </div>
+
+        <!-- HORARIOS -->
+        <div class="info-card fade-up">
+          <span class="card-icon">🕐</span>
+          <p class="card-label">Horarios</p>
+          <div class="schedule-grid">
+            <div class="schedule-item">
+              <p class="time-label">Cena</p>
+              <!-- ✏️ CAMBIAR hora ↓ -->
+              <p class="time-value">21:00</p>
+              <p class="time-desc">Recepción de invitados</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- LUGAR -->
+        <div class="info-card fade-up">
+          <span class="card-icon">📍</span>
+          <p class="card-label">Lugar</p>
+          <!-- ✏️ CAMBIAR nombre y dirección ↓ -->
+          <p class="card-value">Finca Casiana</p>
+          <p class="card-detail">Martín Güemes Este 4178</p>
+          <!-- Mapa de Google Maps -->
+          <div class="map-container">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d261.4629766407958!2d-68.48061572441307!3d-31.555765607137754!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96816ad6ed8e07d9%3A0x6c3b5ab9be261e0c!2sFinca%20Casiana%20-%20Caba%C3%B1as%20y%20Sal%C3%B3n%20de%20eventos!5e1!3m2!1ses!2sar!4v1770831751383!5m2!1ses!2sar"
+              width="600" height="450" style="border:0;" allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+
+        <!-- DRESS CODE -->
+        <div class="info-card fade-up">
+          <span class="card-icon">👗</span>
+          <p class="card-label">Dress Code</p>
+          <!-- ✏️ CAMBIAR el dress code ↓ -->
+          <p class="card-value">Elegante</p>
+        </div>
+      </section>
+
+      <!-- ═══════ CUENTA REGRESIVA ═══════ -->
+      <section class="countdown-section fade-up">
+        <p class="countdown-title">FALTAN</p>
+        <p class="countdown-subtitle">✨ para la gran noche ✨</p>
+        <div class="countdown-grid" id="countdown">
+          <div class="countdown-item">
+            <span class="countdown-number" id="cd-days">--</span>
+            <span class="countdown-label">Días</span>
+          </div>
+          <span class="countdown-separator">:</span>
+          <div class="countdown-item">
+            <span class="countdown-number" id="cd-hours">--</span>
+            <span class="countdown-label">Horas</span>
+          </div>
+          <span class="countdown-separator">:</span>
+          <div class="countdown-item">
+            <span class="countdown-number" id="cd-minutes">--</span>
+            <span class="countdown-label">Min</span>
+          </div>
+          <span class="countdown-separator">:</span>
+          <div class="countdown-item">
+            <span class="countdown-number" id="cd-seconds">--</span>
+            <span class="countdown-label">Seg</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="rsvp-section fade-up" id="rsvp-section">
+        <p class="rsvp-title">CONFIRMAR ASISTENCIA</p>
+        <!-- ✏️ CAMBIAR el número de WhatsApp (con código de país, sin espacios) ↓ -->
+        <a
+          id="rsvp-btn"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfTFLrpERakD0Cy0QAz7ucr2r_hNRldLj0hn3mv7741jzXwLA/viewform?usp=publish-editor"
+          target="_blank"
+          class="rsvp-btn">
+          ¡Click aquí!
+        </a>
+        <!-- ✏️ CAMBIAR fecha límite ↓ -->
+        <p class="rsvp-detail" id="rsvp-detail">Confirmar antes del 02 / 03 /
+          2026</p>
+      </section>
+      <div class="divider fade-up">✦</div>
+
+      <!-- ═══════ REGALO / TRANSFERENCIA ═══════ -->
+      <section class="gift-section fade-up">
+        <div class="gift-card">
+          <span class="gift-icon">🎁</span>
+          <p class="gift-title">¿No sabés qué regalar?</p>
+          <p class="gift-text">
+            Si no tenés idea o preferís algo práctico,<br>
+            podés colaborar con una transferencia 💜
+          </p>
+          <div class="gift-alias">
+            <p class="gift-alias-label">Alias de Mercado Pago</p>
+            <!-- ✏️ CAMBIAR el alias de Mercado Pago ↓ -->
+            <p class="gift-alias-value" id="mp-alias">emilia.s02</p>
+          </div>
+          <br>
+          <button class="gift-copy-btn" onclick="copyAlias()">
+            📋 Copiar alias
+          </button>
+          <p class="gift-note">¡Gracias por tu cariño! 🤍</p>
+        </div>
+      </section>
+
+      <div class="divider fade-up">✦</div>
+
+      <!-- ═══════ SUGERÍ CANCIONES ═══════ -->
+      <section class="music-section fade-up">
+        <div class="music-card">
+          <span class="music-icon">🎶</span>
+          <p class="music-title">¡Armá la playlist con nosotros!</p>
+          <p class="music-text">
+            ¿Qué canción no puede faltar en la fiesta?<br>
+            Dejanos tu sugerencia y la sumamos a la lista 🪩
+          </p>
+          <!-- ✏️ CAMBIAR la URL del formulario de Google ↓ -->
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfbWP0_uX_nmv5xvavBgH1jQMQswzhEW6jbGlcm4htckQ8ePA/viewform?usp=publish-editor"
+            target="_blank"
+            class="music-btn">
+            🎵 Sugerir canción
+          </a>
+        </div>
+      </section>
+
+      <div class="divider fade-up">✦ ✦ ✦</div>
+
+      <!-- ═══════ RSVP ═══════ -->
+
+      <!-- ═══════ FOOTER ═══════ -->
+      <footer class="footer fade-up">
+        <span class="sparkle-emoji">✨🪩✨</span>
+        <p>TE ESPERO PARA CELEBRAR JUNTOS</p>
+      </footer>
+    </div>
+
+    <script>
+      /* ── Partículas — reflejos de bola disco ── */
+      (function () {
+        const container = document.getElementById("particles");
+        for (let i = 0; i < 35; i++) {
+          const p = document.createElement("div");
+          p.className = "particle";
+          p.style.left = Math.random() * 100 + "%";
+          p.style.top = Math.random() * 100 + "%";
+          const size = Math.random() * 4 + 2;
+          p.style.width = size + "px";
+          p.style.height = size + "px";
+          p.style.animationDelay = Math.random() * 6 + "s";
+          p.style.animationDuration = Math.random() * 4 + 3 + "s";
+          container.appendChild(p);
+        }
+      })();
+
+      /* ── Calcular dónde termina el hero para el degradé del body ── */
+      function updateHeroHeight() {
+        const hero = document.querySelector('.hero');
+        if (hero) {
+          const h = hero.offsetTop + hero.offsetHeight;
+          document.body.style.setProperty('--hero-h', h + 'px');
+        }
+      }
+      // Ejecutar cuando carga la imagen del GIF
+      const gifImg = document.querySelector('.hero-bg img');
+      if (gifImg) {
+        if (gifImg.complete) {
+          updateHeroHeight();
+        } else {
+          gifImg.addEventListener('load', updateHeroHeight);
+        }
+      }
+      window.addEventListener('resize', updateHeroHeight);
+
+      /* ── Countdown timer — 7 de marzo 2026, 21:00 (hora local) ── */
+      (function () {
+        // Fecha del evento: 7 de marzo de 2026 a las 21:00 hs (hora Argentina)
+        const eventDate = new Date('2026-03-07T21:00:00-03:00').getTime();
+
+        function updateCountdown() {
+          const now = Date.now();
+          const diff = eventDate - now;
+
+          if (diff <= 0) {
+            document.getElementById('cd-days').textContent = '🎉';
+            document.getElementById('cd-hours').textContent = '';
+            document.getElementById('cd-minutes').textContent = '';
+            document.getElementById('cd-seconds').textContent = '';
+            document.querySelectorAll('.countdown-separator').forEach(s => s.style.display = 'none');
+            document.querySelectorAll('.countdown-label').forEach(l => l.style.display = 'none');
+            document.querySelector('.countdown-subtitle').textContent = '¡Es hoy! 🥳';
+            return;
+          }
+
+          const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+          document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+          document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+          document.getElementById('cd-minutes').textContent = String(minutes).padStart(2, '0');
+          document.getElementById('cd-seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+      })();
+
+      /* ── Deshabilitar RSVP después del 02/03/2026 ── */
+      (function () {
+        // Fecha límite: 2 de marzo de 2026 a las 23:59:59 (hora Argentina)
+        const deadline = new Date('2026-03-02T23:59:59-03:00').getTime();
+        const now = Date.now();
+
+        if (now > deadline) {
+          const btn = document.getElementById('rsvp-btn');
+          const detail = document.getElementById('rsvp-detail');
+          btn.classList.add('disabled');
+          btn.removeAttribute('href');
+          btn.textContent = '🔒 Lista cerrada';
+          detail.innerHTML = '<span class="rsvp-closed">La confirmación ya cerró el 02/03/2026</span>';
+        }
+      })();
+
+      /* ── Copiar alias de Mercado Pago ── */
+      function copyAlias() {
+        const alias = document.getElementById('mp-alias').textContent;
+        navigator.clipboard.writeText(alias).then(function () {
+          const btn = document.querySelector('.gift-copy-btn');
+          const original = btn.innerHTML;
+          btn.innerHTML = '✅ ¡Copiado!';
+          setTimeout(function () { btn.innerHTML = original; }, 2000);
+        });
+      }
+
+      /* ── Fade-up on scroll ── */
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("visible");
+          });
+        },
+        { threshold: 0.15 }
+      );
+      document.querySelectorAll(".fade-up").forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
